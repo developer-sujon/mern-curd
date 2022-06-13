@@ -10,6 +10,7 @@ import Loding from "../partials/Loding";
 function ListProduct() {
   let loder = useRef();
   const [products, setProducts] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ function ListProduct() {
         setProducts(product);
         loder.classList.add("d-none");
       })
+
       .catch((error) => {
         console.log(error);
       });
@@ -32,8 +34,8 @@ function ListProduct() {
     deleteProduct(id)
       .then((result) => {
         console.log(result);
-
         successMessage("Product deleted successfully");
+
         navigate("/");
       })
       .catch((err) => {

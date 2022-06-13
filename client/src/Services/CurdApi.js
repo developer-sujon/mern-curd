@@ -37,7 +37,7 @@ export const readProduct = async () => {
     const products = response.data["data"];
     return products;
   } catch (error) {
-    console.log(error.response.data);
+    console.log(error);
     return false;
   }
 };

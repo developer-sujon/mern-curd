@@ -38,7 +38,7 @@ function CreateProductForm() {
 
       try {
         await createProduct(
-          unitPrice.value,
+          productName.value,
           productKey.value,
           productQuantity.value,
           unitPrice.value,
@@ -76,7 +76,8 @@ function CreateProductForm() {
               <Form.Label>Product Key</Form.Label>
               <Form.Control
                 ref={(input) => (productKey = input)}
-                type="text"
+                type="number"
+                max="1"
                 placeholder="Product Key"
               />
             </Form.Group>
