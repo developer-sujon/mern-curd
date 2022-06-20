@@ -77,7 +77,7 @@ function CreateProductForm() {
               <Form.Control
                 ref={(input) => (productKey = input)}
                 type="number"
-                max="1"
+                min="1"
                 placeholder="Product Key"
               />
             </Form.Group>

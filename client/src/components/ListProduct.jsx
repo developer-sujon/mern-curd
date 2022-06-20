@@ -34,9 +34,9 @@ function ListProduct() {
     deleteProduct(id)
       .then((result) => {
         console.log(result);
-        successMessage("Product deleted successfully");
 
-        navigate("/");
+        successMessage("Product deleted successfully");
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         console.log(err);
@@ -63,15 +63,15 @@ function ListProduct() {
           {products ? (
             products.map(
               ({
-                productName,
                 productKey,
+                productName,
                 productQuantity,
                 unitPrice,
                 totalPrice,
                 _id,
               }) => {
                 return (
-                  <tr>
+                  <tr key={_id}>
                     <td>{productKey}</td>
                     <td>{productName}</td>
                     <td>{productQuantity}</td>

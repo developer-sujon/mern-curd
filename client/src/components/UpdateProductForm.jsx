@@ -12,7 +12,12 @@ function UpdateProductForm(props) {
   const id = props.id;
   const navigate = useNavigate();
 
-  let productName, productKey, productQuantity, unitPrice, totalPrice, loder;
+  let productName,
+    productKey,
+    productQuantity,
+    unitPrice,
+    totalPrice,
+    loder = useRef();
 
   useEffect(() => {
     loder.classList.remove("d-none");
@@ -50,7 +55,7 @@ function UpdateProductForm(props) {
       try {
         await updateProduct(
           id,
-          unitPrice.value,
+          productName.value,
           productKey.value,
           productQuantity.value,
           unitPrice.value,
