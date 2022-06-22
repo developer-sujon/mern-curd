@@ -80,7 +80,7 @@ export const updateProduct = async (
     return true;
   } catch (error) {
     console.log(error);
-    return false;
+    return null;
   }
 };
 
@@ -93,6 +93,6 @@ export const deleteProduct = async (id) => {
     return true;
   } catch (error) {
     console.log(error);
-    return false;
+    return null;
   }
 };

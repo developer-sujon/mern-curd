@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Table } from "react-bootstrap";
 import { deleteProduct, readProduct } from "../Services/CurdApi";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { errorMessage, successMessage } from "../helper/toastMessage/CurdToast";
 
 import Loding from "../partials/Loding";
@@ -13,7 +13,7 @@ function ListProduct() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const fetchAllProduct = () => {
     readProduct()
       .then((product) => {
         setProducts(product);
@@ -23,6 +23,10 @@ function ListProduct() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    fetchAllProduct();
   }, []);
 
   const editProductHandler = (id) => {
@@ -33,10 +37,8 @@ function ListProduct() {
     loder.classList.remove("d-none");
     deleteProduct(id)
       .then((result) => {
-        console.log(result);
-
         successMessage("Product deleted successfully");
-        navigate("/", { replace: true });
+        fetchAllProduct();
       })
       .catch((err) => {
         console.log(err);
